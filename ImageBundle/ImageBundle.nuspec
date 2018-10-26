@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$id$</title>
+        <authors>Oskar Sjöberg</authors>
+        <owners />
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <summary>ImageBundle.</summary>
+		<description>$description$</description>
+		<licenseUrl>https://github.com/osjoberg/ImageBundle/blob/master/License.txt</licenseUrl>
+		<projectUrl>https://github.com/osjoberg/ImageBundle</projectUrl>
+		<tags>image bundle bundling</tags>
+	</metadata>
+</package>

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ImageBundle")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("ImageBundle enables you to bundle images together as single resource for improved performance.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ImageBundle")]

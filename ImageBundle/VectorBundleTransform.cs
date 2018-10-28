@@ -23,6 +23,7 @@
                 using (var stream = file.VirtualFile.Open())
                 {                   
                     var sourceDocument = XDocument.Load(stream);
+                    sourceDocument.DescendantNodes().OfType<XComment>().Remove();
 
                     symbolElement.Add(sourceDocument.Root.Descendants());
 

@@ -7,11 +7,6 @@
 
     public class ImageStyles
     {
-        internal static string GetClassName(string filename)
-        {
-            return filename.Replace('.', '-').Replace(' ', '-');
-        }
-
         public static IHtmlString Render(string bundleVirtualPath)
         {
             if (BundleTable.EnableOptimizations)
@@ -34,7 +29,8 @@
             foreach (var file in bundle.EnumerateFiles(bundleContext))
             {
                 var className = GetClassName(file.VirtualFile.Name);
-                var virtualPath = VirtualPathUtility.Combine(HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath, file.VirtualFile.VirtualPath);
+                var context = HttpContext.Current;
+                var virtualPath = VirtualPathUtility.Combine(context.Request.AppRelativeCurrentExecutionFilePath, file.VirtualFile.VirtualPath);
                 var absolutePath = VirtualPathUtility.ToAbsolute(virtualPath);
 
                 builder.AppendLine($"    .{className} {{ background-image: url(\"{HttpUtility.UrlPathEncode(absolutePath)}\"); }}");
@@ -43,6 +39,11 @@
             builder.AppendLine("</style>");
 
             return new HtmlString(builder.ToString());
+        }
+
+        internal static string GetClassName(string filename)
+        {
+            return filename.Replace('.', '-').Replace(' ', '-');
         }
     }
 }

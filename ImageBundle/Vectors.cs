@@ -36,8 +36,9 @@
             }
 
             var virtualFile = bundleFiles.Single().VirtualFile;
-            
-            var virtualPath = VirtualPathUtility.Combine(HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath, virtualFile.VirtualPath);
+
+            var context = HttpContext.Current;
+            var virtualPath = VirtualPathUtility.Combine(context.Request.AppRelativeCurrentExecutionFilePath, virtualFile.VirtualPath);
             var absolutePath = VirtualPathUtility.ToAbsolute(virtualPath);
 
             using (var stream = virtualFile.Open())

@@ -43,7 +43,7 @@
 
         internal static string GetClassName(string filename)
         {
-            return filename.Replace(".", "\\.");
+            return filename.Replace(".", "\\.").Replace(' ', '-');
         }
     }
 }

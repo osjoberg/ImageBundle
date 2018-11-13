@@ -9,7 +9,7 @@ namespace ImageBundle
     using System.Web.Optimization;
     using System.Xml.Linq;
 
-    public static class Inline
+    public static class InlineImage
     {
         public static IHtmlString ContentAsBase64Data(string path)
         {

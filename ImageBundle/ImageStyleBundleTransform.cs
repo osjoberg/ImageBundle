@@ -23,7 +23,7 @@
                     var className = ImageStyles.GetClassName(file.VirtualFile.Name);
                     var base64Content = Convert.ToBase64String(memoryStream.GetBuffer());
 
-                    builder.Append($".{className}{{background-image:url(\"data:{contentType};base64,{base64Content}\")}}");
+                    builder.Append($".{className}{{background-image:url(data:{contentType};base64,{base64Content})}}");
                 }
             }
 

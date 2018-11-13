@@ -33,7 +33,7 @@
                 var virtualPath = VirtualPathUtility.Combine(context.Request.AppRelativeCurrentExecutionFilePath, file.VirtualFile.VirtualPath);
                 var absolutePath = VirtualPathUtility.ToAbsolute(virtualPath);
 
-                builder.AppendLine($"    .{className} {{ background-image: url(\"{HttpUtility.UrlPathEncode(absolutePath)}\"); }}");
+                builder.AppendLine($"    .{className} {{ background-image: url({HttpUtility.UrlPathEncode(absolutePath)}); }}");
             }
 
             builder.AppendLine("</style>");

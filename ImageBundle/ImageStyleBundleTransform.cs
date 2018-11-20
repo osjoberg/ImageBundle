@@ -21,7 +21,7 @@
 
                     stream.CopyTo(memoryStream);
                     var className = ImageStyles.GetClassName(file.VirtualFile.Name);
-                    var base64Content = Convert.ToBase64String(memoryStream.GetBuffer());
+                    var base64Content = Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
 
                     builder.Append($".{className}{{background-image:url(data:{contentType};base64,{base64Content})}}");
                 }

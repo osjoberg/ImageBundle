@@ -1,7 +1,7 @@
 ﻿namespace ImageBundle
 {
-    using System;
     using System.IO;
+    using System.Security.Cryptography;
     using System.Text;
     using System.Web;
     using System.Web.Optimization;
@@ -15,13 +15,12 @@
             foreach (var file in response.Files)
             {
                 using (var stream = file.VirtualFile.Open())
-                using (var memoryStream = new MemoryStream())
-                {
+                using (var cryptoStream = new CryptoStream(stream, new ToBase64Transform(), CryptoStreamMode.Read))
+                using (var streamReader = new StreamReader(cryptoStream))
+                {                   
                     var contentType = MimeMapping.GetMimeMapping(file.VirtualFile.Name);
-
-                    stream.CopyTo(memoryStream);
                     var className = ImageStyles.GetClassName(file.VirtualFile.Name);
-                    var base64Content = Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
+                    var base64Content = streamReader.ReadToEnd();
 
                     builder.Append($".{className}{{background-image:url(data:{contentType};base64,{base64Content})}}");
                 }

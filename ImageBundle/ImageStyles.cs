@@ -7,12 +7,19 @@
 
     public class ImageStyles
     {
+        private static string DefaultTagFormat { get; set; } = "<link href=\"{0}\" rel=\"stylesheet\"/>";
+
         public static IHtmlString Render(string bundleVirtualPath)
+        {
+            return RenderFormat(DefaultTagFormat, bundleVirtualPath);
+        }
+
+        public static IHtmlString RenderFormat(string tagFormat, string bundleVirtualPath)
         {
             if (BundleTable.EnableOptimizations)
             {
                 var url = BundleResolver.Current.GetBundleUrl(bundleVirtualPath);
-                return new HtmlString($"<link href=\"{url}\" rel=\"stylesheet\"/>");
+                return new HtmlString(string.Format(tagFormat, url));
             }
 
             var bundleContext = new BundleContext(new HttpContextWrapper(HttpContext.Current), BundleTable.Bundles, bundleVirtualPath);
